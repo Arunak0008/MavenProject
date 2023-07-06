@@ -12,13 +12,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class Test00001 {
 	WebDriver driver;
 	 
 	 @BeforeMethod
 	public void setUp()
 	{
-		 System.setProperty("webdriver.chrome.driver", "C:\\Users\\ELCOT\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		// WebDriverManager.chromedriver().setup();
+			//WebDriver driver=new ChromeDriver();
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ELCOT\\Downloads\\chromedriver_win32 (2)\\chromedriver.exe");
 	     driver = new ChromeDriver();
 driver.get("https://amazon.in");
 driver.manage().window().maximize();
@@ -42,9 +47,10 @@ driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	@AfterMethod
 	public void tearDown()
 	{
+		if (driver != null) {
 	driver.quit();	
 	}
-
+	}
 
 }
 
